@@ -4,10 +4,7 @@
         <plugin name="Smart_CustomOption::addCustomOption"
                 type="Smart\CustomOption\Plugin\CustomOptions" sortOrder="1" />
     </type>
-    <type name="Magento\Catalog\Controller\Adminhtml\Category\Image\Upload">
-        <plugin name="Smart_CustomOption::addImage"
-                type="Smart\CustomOption\Plugin\AddImage" sortOrder="2" />
-    </type>
+    <preference for="Magento\Catalog\Controller\Adminhtml\Category\Image\Upload" type="Smart\CustomOption\Controller\Adminhtml\Category\Image\Upload"/>
     <type name="Magento\Catalog\Ui\DataProvider\Product\Form\ProductDataProvider">
         <plugin name="Smart_CustomOption::getImage"
                 type="Smart\CustomOption\Plugin\GetImage" sortOrder="3" />

@@ -1,18 +1,12 @@
 <?php
 
-namespace Smart\CustomOption\Plugin;
+namespace Smart\CustomOption\Controller\Adminhtml\Category\Image;
 
-use Magento\Catalog\Controller\Adminhtml\Category\Image\Upload;
+use Magento\Framework\Controller\ResultFactory;
 
-class AddImage
+class Upload extends \Magento\Catalog\Controller\Adminhtml\Category\Image\Upload
 {
-    private $_objectManager;
-
-    /**
-     * @param Upload $subject
-     * @return array
-     */
-    public function beforeExecute(Upload $subject)
+    public function execute()
     {
         if (!isset($_FILES['image'])) {
             $test = json_encode($_FILES['product']);
@@ -34,6 +28,17 @@ class AddImage
             $_FILES = json_decode($_FILES, true);
         }
 
-        return $_FILES;
+        if (isset($_FILES['image'])) {
+            $imageId = $this->_request->getParam('param_name', 'image');
+        } else {
+            $imageId = 'product';
+        }
+
+        try {
+            $result = $this->imageUploader->saveFileToTmpDir($imageId);
+        } catch (\Exception $e) {
+            $result = ['error' => $e->getMessage(), 'errorcode' => $e->getCode()];
+        }
+        return $this->resultFactory->create(ResultFactory::TYPE_JSON)->setData($result);
     }
 }
