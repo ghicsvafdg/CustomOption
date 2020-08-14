@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions">
+        <plugin name="Smart_CustomOption::addCustomOption"
+                type="Smart\CustomOption\Plugin\CustomOptions" sortOrder="1" />
+    </type>
+    <type name="Magento\Catalog\Controller\Adminhtml\Category\Image\Upload">
+        <plugin name="Smart_CustomOption::addImage"
+                type="Smart\CustomOption\Plugin\AddImage" sortOrder="2" />
+    </type>
+    <type name="Magento\Catalog\Ui\DataProvider\Product\Form\ProductDataProvider">
+        <plugin name="Smart_CustomOption::getImage"
+                type="Smart\CustomOption\Plugin\GetImage" sortOrder="3" />
+    </type>
+<!--    <type name="Magento\Catalog\Model\Product">-->
+<!--    <plugin name="Smart_CustomOption::changeProductName"-->
+<!--            type="Smart\CustomOption\Plugin\ProductPlugin" sortOrder="2" />-->
+<!--    </type>-->
+</config>
+<!--<preference for="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions" type="Smart\CustomOption\Plugin\ChangeSkuField" />-->

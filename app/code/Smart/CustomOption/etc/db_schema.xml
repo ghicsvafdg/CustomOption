@@ -1,0 +1,22 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="catalog_product_option_type_value" resource="default" engine="innodb" comment="Catalog Product Option Type Value Table">
+        <column xsi:type="int" name="option_type_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Option Type ID"/>
+        <column xsi:type="int" name="option_id" padding="10" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Option ID"/>
+        <column xsi:type="varchar" name="sku" nullable="true" length="64" comment="SKU"/>
+        <column xsi:type="int" name="sort_order" padding="10" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Sort Order"/>
+        <column xsi:type="text" name="image" nullable="false"  comment="image"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="option_type_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="CAT_PRD_OPT_TYPE_VAL_OPT_ID_CAT_PRD_OPT_OPT_ID"
+                    table="catalog_product_option_type_value" column="option_id" referenceTable="catalog_product_option"
+                    referenceColumn="option_id" onDelete="CASCADE"/>
+        <index referenceId="CATALOG_PRODUCT_OPTION_TYPE_VALUE_OPTION_ID" indexType="btree">
+            <column name="option_id"/>
+        </index>
+    </table>
+</schema>
