@@ -9,6 +9,7 @@
         <plugin name="Smart_CustomOption::getImage"
                 type="Smart\CustomOption\Plugin\GetImage" sortOrder="3" />
     </type>
+    <preference for="Magento\Catalog\Block\Product\View\Options\Type\Select\Checkable" type="Smart\CustomOption\Block\Product\View\Options\Type\Select\Checkable"/>
 <!--    <type name="Magento\Catalog\Model\Product">-->
 <!--    <plugin name="Smart_CustomOption::changeProductName"-->
 <!--            type="Smart\CustomOption\Plugin\ProductPlugin" sortOrder="2" />-->
